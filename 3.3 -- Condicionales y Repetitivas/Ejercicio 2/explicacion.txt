@@ -1,0 +1,54 @@
+Mejora el ejercicio de la lotería primitiva del tema anterior. Ahora los números se seleccionan de un
+boleto al estilo “bingo” con filas y columnas, para representar los números seleccionados se usarán
+checkbox, y para el número de serie una caja de texto. Cuando se pulse el botón jugar, se mostrará la
+combinación ganadora generada aleatoriamente y los aciertos que ha tenido. No se usarán estructuras
+repetitivas ni arrays, se mostrará la combinación ganadora en una tabla con una sola fila y un número
+en cada columna.
+Se mostrará el número de aciertos que ha tenido el usuario y cuánto dinero ha ganado:
+-menos de 4 aciertos: nada
+-4 aciertos: dinero vuelto
+-5 aciertos: 30 euros
+-6 aciertos: 100 euros
+-número de serie: Si se acierta se sumarán 500 euros independientemente del número de aciertos.
+Nota: no hace falta comprobar todos los números, solo los de la combinación ganadora, por lo que no
+se controla si el usuario selecciona más de 6 números.
+
+================================================================================
+EXPLICACIÓN TÉCNICA - EJERCICIO: LOTERÍA PRIMITIVA (CONDICIONALES SIN ARRAYS)
+================================================================================
+
+1. FORMULARIO ESTILO BINGO (index.html)
+--------------------------------------------------------------------------------
+- Estructura visual: Se monta una rejilla mediante CSS Grid (7 columnas x 7 filas) 
+  para organizar los 49 números como un cartón de bingo tradicional.
+- Checkboxes independientes: Cada número tiene su propio checkbox con identificador 
+  name="num1", name="num2", ..., name="num49". 
+  Si el usuario no marca un número, ese campo simplemente no viaja en el POST.
+- Campo de serie: <input type="number"> con min="1" y max="999" validado en HTML5.
+
+
+2. LÓGICA Y RESTRICCIONES EN EL SERVIDOR (sorteo.php)
+--------------------------------------------------------------------------------
+- Cumplimiento de restricciones (Sin arrays ni bucles):
+  * Se definen 6 variables individuales ($g1, $g2, $g3, $g4, $g5, $g6) generadas 
+    con rand(1, 49).
+  * La serie ganadora se obtiene con rand(1, 999).
+
+- Verificación de aciertos por clave dinámica:
+  * Como el enunciado indica que no hace falta validar si marcó más de 6 y solo 
+    revisar los premiados, se comprueba:
+      if (isset($_POST['num' . $g1])) { $aciertos++; }
+  * PHP concatena la cadena 'num' con el número ganador generado al vuelo y 
+    comprueba con isset() si ese checkbox fue enviado por el usuario.
+  * Se repite la comprobación en 6 sentencias if secuenciales, evitando bucles.
+
+- Evaluación de premios con condicionales if / elseif:
+  * Aciertos < 4: 0 € ("Nada").
+  * 4 aciertos: "Dinero vuelto".
+  * 5 aciertos: "30 €".
+  * 6 aciertos: "100 €".
+  * Serie: Condicional independiente ($serie_usuario === $serie_ganadora) que suma 
+    500 € adicionales al premio obtenido.
+
+- Salida en tabla (1 fila, 6 columnas):
+  * Se representan las 6 variables dentro de 6 etiquetas <td> en un único <tr>.

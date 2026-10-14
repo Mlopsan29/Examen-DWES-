@@ -1,0 +1,42 @@
+Partiendo del Ejercicio1, amplíalo con la siguiente funcionalidad. En la pantalla principal se mostrará el
+número de intentos que lleva el usuario, que en la primera carga será de 0 intentos y conforme se
+vayan pulsando los cuadrados para descubrir la imagen que esconden se irá aumentando en 1. Cuando
+el usuario intente adivinar la palabra de la imagen, si acierta se mostrará el número de intentos en que
+
+lo ha conseguido, y si ha fallado mostrará el número de intentos que lleva hasta ese momento, y al
+volver a la pantalla principal seguirá aumentando el número de intentos que llevaba.
+Nota: para controlar el número de intentos es necesario pasarlo como parámetro cada vez que se
+navega de una página a otra, si no se pierde su valor.
+
+EXPLICACIÓN TÉCNICA - EJERCICIO 1 (AMPLIACIÓN): PERSISTENCIA DE INTENTOS
+================================================================================
+
+1. PERSISTENCIA SIN ESTADO (STATELESS)
+--------------------------------------------------------------------------------
+- HTTP es un protocolo sin estado nativo: entre peticiones no recuerda variables 
+  a menos que se usen sesiones o parámetros explícitos.
+- Migración a 'index.php': Para recibir parámetros al recargar la vista principal, 
+  el archivo pasa de ser estático (.html) a dinámico (.php).
+
+2. CICLO DE VIDA DEL PARÁMETRO
+--------------------------------------------------------------------------------
+- Lectura inicial (GET en index.php):
+  $intentos_iniciales = isset($_GET['intentos']) ? (int)$_GET['intentos'] : 0;
+  Si es la primera carga no existe el parámetro y se asigna 0. Si viene de un fallo, 
+  se recupera el valor enviado en la URL.
+
+- Incremento en cliente (JavaScript):
+  * La variable global 'totalIntentos' arranca con el valor inyectado por PHP.
+  * En cada evento 'onclick' (función destapar), se ejecuta totalIntentos++ y se 
+    actualizan al mismo tiempo el <span> del DOM y el <input type="hidden">.
+
+- Envío al servidor (POST hacia comprobar.php):
+  Al pulsar "Comprobar", el formulario envía tanto el texto de la respuesta como 
+  el campo oculto 'intentos'.
+
+- Retorno y bifurcación (comprobar.php):
+  * Si acierta: Muestra los intentos definitivos y ofrece reiniciar (index.php?intentos=0).
+  * Si falla: Muestra los intentos que lleva y concatena el valor en el enlace 
+    de retorno: href="index.php?intentos=<?php echo $intentos; ?>", permitiendo 
+    que el contador continúe sumando desde esa cifra al volver al tablero.
+================================================================================

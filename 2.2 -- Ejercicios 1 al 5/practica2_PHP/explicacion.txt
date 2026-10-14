@@ -1,0 +1,32 @@
+
+1. La parte de HTML
+
+Lo primero es introducir los 6 numeros. Tipo number, n1 a n6. minimo 1 maximo 49 para que no se pueda meter otro valor.
+Lo mismo con la serie. Minimo 1 maximo 999.
+Un boton submit para enviar.
+
+Con el método post se envían los datos.
+
+2. El formulario
+
+El isset() comprueba si 'enviar¡ existe en el array $_POST. Si no existe, el bloque no se ejecuta.
+
+3. Recoger los datos en el Array.
+
+Los números se recogen en un array $numeros para iterarlos con los bucles.
+
+4. Detectar numeros repetidos.
+
+$hay_repetidos comprueba si están repetidos. Son dos bucles anidados. El primero $i se le suma 1 para no compararlo consigo mismo o comprobaciones ya hechas. Si dos coinciden, pasa a true.
+
+5. Generar la combinacion ganadora
+
+Con $ganadores. Se usa un array con un while que no para hasta contener 6 erlementos (con el count).
+En cada vuelta se genera un numero aleatorio del 1 al 49. in_array comprueba si ya salió antes y $ganadores[] = $num_aleatorio lo inserta si no está repetido.
+Y, se genera la serie ganadora con otro rand (1,999)
+
+6. El cálculo de acierto y el mensaje al usuario.
+
+Se pone un contador $aciertos a 0. Con un bucle for recorremos cada número y comprobamos con in_array() si coincide con alguno de la conbinacion ganadora. Cada coincidencia se suma 1 con $aciertos++.
+
+Mediante los echo se imprimen los resultaods en pantalla. El if($serie == $serie_ganadora) dice si también se ha acertado la serie.

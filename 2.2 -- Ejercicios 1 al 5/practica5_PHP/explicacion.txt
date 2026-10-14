@@ -1,0 +1,17 @@
+Metodo post en el cuerpo del HTTP de nuevo.
+Step="any" para los decimales. Permite ingresar no enteros (1.5 metros o 25.4l/min)
+Validacion de rangon (min=0.01) para impedir negativos o cuerpo
+Required para obligar a enviar los 3 datos antes de enviar.
+
+isset() verifica que existen los tres valores en el array global ante sde operar.
+Conversion a float para numeros con decimales
+
+Radio = $diametro * 2
+Volumen en metros cubicos ($volumen_m3):  M_PI * radio * radio * altura
+Conversion a litros: Multiplico por 1000 que es un metro cubico, 1000 litros.
+
+Minutos totales: Litros / caudal (redondeado con round)
+Horas enteras: (floor(Minutos_totales / 60)). Redondea hacia abajo el entero mas cercano
+Minutos sobrantes (%): minutos_totales % 60. El resto de la division entera para extraer los minutos restantes que no llegan a formar una hora completa.
+
+Renderizado con las etiquetas corta de <?php echo $variable.

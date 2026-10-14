@@ -1,0 +1,15 @@
+Resumen del cilindro.<?php ?>
+
+He puesto isset() con el post de diametro y de altura para comprobar si existen dentro del array. 
+Los valores del array se almacenan en viarbales locales ($diametro, $altura,).
+El radio es = diametro / 2.
+El volumen es $volumen = M_PI * ($radio * $radio) * $altura;
+Aplico redondeo a dos decimales con round($volumen, 2)
+
+En el else inicializo las variables a 0 por si la página se abre sin datos.
+Las <p> pintan los valores calculados en el navegador.
+
+El CSS:
+El fondo lo he puesto blanco con una sombra sutil para centrar la atencion en los datos.
+El Flexbox con display:flex para que el cilindro y el texto se pongan uno al lado del otro.
+En .valor-final he puesto el color en verde y más grosor de fuente para resaltar el dato principal.

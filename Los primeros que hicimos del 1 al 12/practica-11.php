@@ -1,0 +1,50 @@
+<?php
+//Ejercicio 11 Igual que el programa anterior, pero esta vez la pirámide estará hueca (se debe ver únicamente el
+//contorno hecho con asteriscos).
+
+/*$totalFilas = 5;
+for($fila = 1; $fila <= $totalFilas; $fila++) {
+
+// 1. Calcular e imprimir los espacios
+
+    echo str_repeat(" ", $totalFilas - $fila); // Repite el string espacio en blanco. Se va haciendo el bucle para los espacios.
+
+// 2. Calcular e imprimir los asteriscos
+
+    echo str_repeat("*", (2 * $fila) -1 ); // Imprime los asteriscos. Es 2 * la fila - 1 porque es impar. 
+
+   // 3. Salto de línea. Puede ser <br> tmb
+
+    echo "\n";
+}
+*/
+
+
+
+$totalFilas = 5;
+
+for ($fila = 1; $fila <= $totalFilas; $fila++) {
+
+    
+
+    echo str_repeat(" ", $totalFilas - $fila); //  Espacios en blanco para la pirámide
+
+    // 2. Condicional para pintar la base
+
+    if ($fila == 1) { // Si es la fila 1 (donde empieza) imprime un asterisco
+        echo "*";  
+
+    } elseif ($fila == $totalFilas) { // 
+
+        echo str_repeat("*", (2 * $fila) - 1);
+
+    } else {
+        echo "*" . str_repeat(" ", (2 * $fila) - 3) . "*"; 
+    }
+
+    // 3. Salto de línea para todas las filas
+
+    echo "\n";
+}
+
+?>

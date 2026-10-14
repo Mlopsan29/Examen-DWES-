@@ -1,0 +1,90 @@
+/* Contenedor general */
+.contenedor-juego {
+    max-width: 420px;
+    margin: 40px auto;
+    background: #ffffff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+    font-family: sans-serif;
+}
+
+/* Tablero 3x3 */
+.tablero {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 4px;
+    justify-content: center;
+    margin: 20px auto;
+}
+
+/* Cada celda del mosaico */
+.casilla {
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+    background-image: url('images/secreto.jpg');
+    background-size: 300px 300px; /* Tamaño total del tablero */
+    transition: background-color 0.2s ease;
+}
+
+/* Estado oculto (dado la vuelta) */
+.casilla.tapada {
+    background-image: none !important;
+    background-color: #2c3e50;
+    border-radius: 4px;
+}
+
+.casilla.tapada:hover {
+    background-color: #34495e;
+}
+
+/* Posición de cada una de las 9 partes de la imagen */
+.pos-0 { background-position: 0 0; }
+.pos-1 { background-position: -100px 0; }
+.pos-2 { background-position: -200px 0; }
+.pos-3 { background-position: 0 -100px; }
+.pos-4 { background-position: -100px -100px; }
+.pos-5 { background-position: -200px -100px; }
+.pos-6 { background-position: 0 -200px; }
+.pos-7 { background-position: -100px -200px; }
+.pos-8 { background-position: -200px -200px; }
+
+/* Formulario */
+.form-adivinar {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-adivinar input[type="text"] {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 16px;
+}
+
+.form-adivinar input[type="submit"] {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Estilos de acierto/fallo en el resultado */
+.texto-acierto { color: #27ae60; }
+.texto-fallo { color: #e74c3c; }
+
+.imagen-completa img {
+    max-width: 300px;
+    border-radius: 6px;
+    margin: 15px 0;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}

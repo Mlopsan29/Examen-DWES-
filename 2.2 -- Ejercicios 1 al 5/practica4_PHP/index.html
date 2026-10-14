@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Comparador de Precios</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Comparador de Precios</h2>
+    <form action="media.php" method="post">
+        <label for="tienda1">Precio en Tienda 1 (€):</label>
+        <input type="number" id="tienda1" name="tienda1" step="any" min="0" required placeholder="Ej: 12.50">
+
+        <label for="tienda2">Precio en Tienda 2 (€):</label>
+        <input type="number" id="tienda2" name="tienda2" step="any" min="0" required placeholder="Ej: 14.20">
+
+        <label for="tienda3">Precio en Tienda 3 (€):</label>
+        <input type="number" id="tienda3" name="tienda3" step="any" min="0" required placeholder="Ej: 11.90">
+
+        <input type="submit" value="Calcular Media y Diferencias">
+    </form>
+</div>
+
+</body>
+</html>

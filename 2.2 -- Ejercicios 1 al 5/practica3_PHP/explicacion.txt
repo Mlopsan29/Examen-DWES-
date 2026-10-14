@@ -1,0 +1,20 @@
+Se envía mediante POST todos los controles de diseño que pida el usuario. En la página de resultados se crea un array con los valores que envíe y se añaden al CSS para modificar el diseño visual en tiempo real.
+
+En el formulario action="resultado.php" le dice al navegador a dónde mandar la info.
+method="post" los envía al cuerpo de la peticion http.
+
+Los input.
+
+type=color --> Despliega la paleta de colores con el código hexadecimal #ffffff.
+select name="fuente" --> Menú desplegable. El value: es lo que ve el usuario. El usuario ve por ejemplo Courier New pero le llega 'Courier New', monospace al CSS que es la sintaxis correcta.
+input type="radio" --> Alineacion y banner. Como tienen el mismo name, el navegador los mete en un grupo excluyente permitiendo marcar solo uno a la vez.
+checked --> El valor por defecto que ya viene marcado, para no dejar campos vacíos.
+
+Explicación de resultado.php. 
+
+Al principio con el !isset.. significa que si se intenta entrar escribiendo la URL sin rellenar el formulario, las variables no existirían y saldrían errores. Así que el header redirige de vuelta a configuracion y exit() detiene el script.
+
+El CSS se cambia dinamicamente con el echo. Se añaden las variables de CSS normales pero con echo se añade la variable del array que ha enviado el usuario desde la configuracion.
+
+Y la ruta de la imagen igual. Con el echo se pone la variable.
+

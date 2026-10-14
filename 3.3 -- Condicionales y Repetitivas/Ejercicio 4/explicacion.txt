@@ -1,0 +1,41 @@
+Diseñar una página web que muestre una tabla con 3 columnas, la primera corresponde al número de
+bloque, la segunda al piso y en la tercera hay un botón llamar. En total hay 10 bloques y cada bloque
+tiene 7 pisos. Cuando se pulse llamar en un piso de un bloque, mostrará en otra página el mensaje del
+tipo “Usted ha llamado al piso 3 del bloque 6”. Utiliza estructuras repetitivas para generar la tabla.
+
+
+EXPLICACIÓN TÉCNICA - EJERCICIO 4: PORTERO AUTOMÁTICO (BUCLES ANIDADOS)
+================================================================================
+
+1. GENERACIÓN DINÁMICA CON ESTRUCTURAS REPETITIVAS (index.php)
+--------------------------------------------------------------------------------
+- Bucles for anidados:
+  * Bucle exterior ($bloque): Va desde 1 hasta 10 ($bloque <= 10). Itera a 
+    través de los 10 bloques del complejo residencial.
+  * Bucle interior ($piso): Va desde 1 hasta 7 ($piso <= 7). Por cada bloque, 
+    genera secuencialmente las 7 alturas o pisos.
+  * Complejidad: 10 bloques x 7 pisos = 70 filas generadas dinámicamente en la 
+    tabla HTML sin escribir código repetitivo a mano.
+
+- Parámetros por URL (Método GET):
+  * Cada fila cuenta con un enlace con clase de botón:
+      <a href='llamar.php?bloque={$bloque}&piso={$piso}'>Llamar</a>
+  * Se transmiten los valores concretos de bloque y piso en la Query String 
+    sin necesidad de crear 70 formularios independientes.
+
+
+2. RECEPCIÓN Y RENDERIZADO EN EL SERVIDOR (llamar.php)
+--------------------------------------------------------------------------------
+- Comprobación con isset():
+  isset($_GET['bloque'], $_GET['piso']) verifica que ambos parámetros viajen en 
+  la URL antes de procesar la solicitud, evitando errores de clave no definida.
+
+- Conversión de tipos ((int)):
+  Se castea el valor recibido por GET a entero explícito por seguridad e integridad 
+  de los datos.
+
+- Interpolación de variables:
+  Se construye la cadena final solicitada en el enunciado:
+  "Usted ha llamado al piso {$piso} del bloque {$bloque}."
+  Se imprime en pantalla y se facilita un enlace directo para volver al listado.
+================================================================================

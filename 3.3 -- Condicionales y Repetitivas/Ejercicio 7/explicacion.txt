@@ -1,0 +1,49 @@
+Realiza el ejercicio 2 correspondiente al juego de la primitiva, pero usando estructuras repetitivas para
+simplificar el código. Pero en esta ocasión lo vamos a realizar de una forma más vistosa gracias a que
+podemos utilizar las estructuras repetitivas. Para mostrar el resultado de la apuesta vamos a mostrar
+una tabla con todos los números de la primitiva, y los números elegidos por el usuario que hayan sido
+aciertos serán de color verde, los elegidos por el usuario que no han sido aciertos serán de color negro,
+los números de la combinación aleatoria que no han sido elegidos por el usuario serán de color rojo y
+por último el resto de números serán de color gris. También contaremos los números seleccionados
+por el usuario y si son más de 6, en vez de mostrar el premio obtenido se mostrará un mensaje
+indicando que ha hecho trampas.
+
+
+EXPLICACIÓN TÉCNICA - EJERCICIO 2: PRIMITIVA VISUAL CON BUCLES
+
+
+1. GENERACIÓN DINÁMICA DEL FORMULARIO (index.php)
+--------------------------------------------------------------------------------
+- Bucle for de generación:
+  for ($i = 1; $i <= 49; $i++) genera dinámicamente las 49 etiquetas y casillas 
+  tipo checkbox, reduciendo el código HTML de casi 100 líneas a solo 8.
+- Nomenclatura de arrays en inputs:
+  name="numeros[]" agrupa automáticamente todas las casillas marcadas dentro 
+  de un array indexado en PHP al procesar la petición POST.
+
+
+2. LÓGICA DE CONTROL Y COMBINACIÓN GANADORA (sorteo.php)
+--------------------------------------------------------------------------------
+- Control de trampas:
+  count($elegidos) determina el número total de casillas marcadas.
+  Si supera 6 ($es_tramposo = true), se anula el cálculo de premios y se muestra 
+  el mensaje de trampa requerido en el enunciado.
+
+- Generación aleatoria sin duplicados con bucle while:
+  while (count($ganadores) < 6) genera números con rand(1, 49) y utiliza 
+  in_array() para insertar únicamente valores no repetidos en la combinación ganadora.
+
+
+3. MATRIZ VISUAL DE RESULTADOS (7x7) A 4 COLORES
+--------------------------------------------------------------------------------
+- Doble bucle anidado:
+  Dos bucles for (7 filas x 7 columnas) recorren del número 1 al 49 imprimiendo 
+  la cuadrícula completa de resultados.
+
+- Algoritmo de clasificación de color por celda:
+  1. Verde  ($es_elegido && $es_ganador): Número jugado por el usuario que 
+     además coincidió con la combinación ganadora (acierto).
+  2. Negro  ($es_elegido && !$es_ganador): Número marcado por el usuario que no salió.
+  3. Rojo   (!$es_elegido && $es_ganador): Número ganador que el usuario no eligió.
+  4. Gris   (resto de casos): Números no jugados ni premiados.
+

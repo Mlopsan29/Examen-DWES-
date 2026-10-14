@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tiempo de Llenado de Cilindro</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="contenedor">
+    <h2>Llenado de Depósito Cilíndrico</h2>
+    <form action="llenado.php" method="post">
+        <label for="diametro">Diámetro (metros):</label>
+        <input type="number" id="diametro" name="diametro" step="any" min="0.01" required>
+
+        <label for="altura">Altura (metros):</label>
+        <input type="number" id="altura" name="altura" step="any" min="0.01" required>
+
+        <label for="caudal">Caudal (litros/minuto):</label>
+        <input type="number" id="caudal" name="caudal" step="any" min="0.01" required>
+
+        <input type="submit" value="Calcular Tiempo">
+    </form>
+</div>
+
+</body>
+</html>

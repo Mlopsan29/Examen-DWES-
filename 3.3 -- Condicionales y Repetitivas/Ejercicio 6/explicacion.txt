@@ -1,0 +1,38 @@
+Realiza el ejercicio 1 correspondiente al juego de adivinar una imagen, pero usando estructuras
+repetitivas para simplificar el código.
+
+EXPLICACIÓN TÉCNICA - EJERCICIO: MOSAICO 3x3 SIMPLIFICADO CON BUCLES
+================================================================================
+
+1. SIMPLIFICACIÓN MEDIANTE ESTRUCTURAS REPETITIVAS (index.php)
+--------------------------------------------------------------------------------
+- Bucle 'for' de generación:
+  En lugar de declarar 9 etiquetas <div> estáticas en HTML, se emplea un bucle:
+    for ($i = 0; $i < 9; $i++)
+  que itera de 0 a 8 imprimiendo dinámicamente cada casilla del tablero.
+
+- Cálculo matemático de coordenadas de corte:
+  * Columna horizontal ($col): Se obtiene con el operador módulo ($i % 3). 
+    Produce la secuencia cíclica 0, 1, 2, 0, 1, 2...
+  * Fila vertical ($fila): Se obtiene dividiendo y redondeando hacia abajo 
+    con floor($i / 3). Produce 0, 0, 0 para la fila superior; 1, 1, 1 para la 
+    intermedia; y 2, 2, 2 para la inferior.
+
+- Desplazamiento del fondo (background-position):
+  * Eje X: $col * -100px.
+  * Eje Y: $fila * -100px.
+  Al inyectar estos valores calculados directamente en el atributo 'style', se 
+  elimina la necesidad de escribir 9 clases de posición manuales en el archivo CSS.
+
+
+2. COMPORTAMIENTO EN CLIENTE Y SERVIDOR
+--------------------------------------------------------------------------------
+- DOM y temporizador (JavaScript):
+  La función destapar(this) retira la clase '.tapada' y activa un setTimeout() 
+  a 2000 ms (2 segundos) para volver a ocultar la celda sin recargar la página.
+
+- Validación (comprobar.php):
+  Se recupera la entrada con $_POST['respuesta'], se eliminan espacios residuales 
+  con trim() y se iguala con la palabra clave aplicando strtolower() para ignorar 
+  mayúsculas/minúsculas.
+================================================================================

@@ -1,0 +1,34 @@
+Diseñar una página que esté compuesta por una tabla de 10 filas por 10 columnas, y en cada celda
+habrá una imagen de un ojo cerrado. Cada vez que el usuario pulse un ojo, se recargará la página con
+todos los ojos cerrados salvo el que se ha pulsado que corresponderá a un ojo abierto.
+
+EXPLICACIÓN TÉCNICA - EJERCICIO 5: MATRIZ DINÁMICA DE OJOS 10x10 (REPETITIVAS)
+
+================================================================================
+
+1. ARQUITECTURA Y FLUJO DE DATOS
+--------------------------------------------------------------------------------
+- Persistencia por Query String (GET):
+  Al pulsar sobre cualquiera de las 100 celdas, se recarga la propia página 
+  invocando su URL con los parámetros de la casilla: index.php?fila=X&col=Y.
+- Control de estado inicial:
+  isset($_GET['fila'], $_GET['col']) detecta si hay coordenadas activas. Si el 
+  usuario accede por primera vez, las variables toman el valor -1 para que todas 
+  las celdas arranquen en estado cerrado por defecto.
+
+
+2. GENERACIÓN MATRICIAL MEDIANTE BUCLES ANIDADOS
+--------------------------------------------------------------------------------
+- Doble bucle for:
+  * Bucle exterior ($f): Itera 10 veces (de 0 a 9) generando las etiquetas <tr>.
+  * Bucle interior ($c): Itera 10 veces por cada fila generando las celdas <td>.
+  * Total de iteraciones: 10 x 10 = 100 celdas creadas dinámicamente.
+
+- Renderizado condicional en cada celda:
+  * Se evalúa la igualdad estricta: ($f === $fila_activa && $c === $col_activa).
+  * Si la celda actual coincide con los parámetros recibidos por GET, se 
+    inyecta la ruta 'images/abierto.png'.
+  * En cualquier otro caso, se renderiza 'images/cerrado.png'.
+  * Esto asegura que solo un ojo permanezca abierto en cada recarga sin necesidad 
+    de almacenar arrays ni recurrir a variables de sesión.
+================================================================================

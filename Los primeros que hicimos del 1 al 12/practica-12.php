@@ -1,0 +1,48 @@
+<?php
+/*Ejercicio 12. Igual que el programa anterior, pero esta vez la pirámide debe aparecer invertida, con el vértice hacia bajo.
+$totalFilas = 5;
+
+for ($fila = 1; $fila <= $totalFilas; $fila++) {
+
+    // 1. Espacios en blanco para centrar 
+
+    echo str_repeat(" ", $totalFilas - $fila);
+
+    // 2. Condicional para pintar la base
+
+    if ($fila == 1) {
+        echo "*";
+    } elseif ($fila == $totalFilas) {
+        echo str_repeat("*", (2 * $fila) - 1);
+    } else {
+        echo "*" . str_repeat(" ", (2 * $fila) - 3) . "*";
+    }
+
+    // 3. Salto de línea para todas las filas
+
+    echo "\n";
+}
+    */
+
+$totalFilas = 5;
+
+// Le doy la vuelta al bucle for. Empieza en 5 y decrementa hasta 1
+
+for ($fila = $totalFilas; $fila >=1; $fila--) { // Igualo las filas a las filas totales para que empiece en 5. Lo decremento hasta 1.
+
+    // 1. Espacios en blanco para centrar 
+
+    echo str_repeat(" ", $totalFilas - $fila);
+
+    if ($fila == $totalFilas) { // La fila 5 ahora es la primera en imprimirse (la base superior)
+        
+    echo str_repeat("*", (2 * $fila) -1);
+
+    } elseif ($fila == 1) { // La fila 1 ahora es la última (el vértice inferior)
+        echo "*";
+    } else {
+        echo "*" . str_repeat(" ", (2 * $fila) - 3 ) . "*"; // Filas intermedias
+    }
+
+    echo "\n";
+}

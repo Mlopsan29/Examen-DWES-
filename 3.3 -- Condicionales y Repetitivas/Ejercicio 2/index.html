@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lotería Primitiva - Boleto</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="contenedor-boleto">
+    <h2>Lotería Primitiva</h2>
+    <p>Marca tus números de la suerte (1 al 49):</p>
+
+    <form action="sorteo.php" method="post">
+        <!-- Rejilla estilo bingo del 1 al 49 -->
+        <div class="rejilla-bingo">
+            <!-- Fila 1 -->
+            <label class="casilla-num"><input type="checkbox" name="num1" value="1"> 1</label>
+            <label class="casilla-num"><input type="checkbox" name="num2" value="1"> 2</label>
+            <label class="casilla-num"><input type="checkbox" name="num3" value="1"> 3</label>
+            <label class="casilla-num"><input type="checkbox" name="num4" value="1"> 4</label>
+            <label class="casilla-num"><input type="checkbox" name="num5" value="1"> 5</label>
+            <label class="casilla-num"><input type="checkbox" name="num6" value="1"> 6</label>
+            <label class="casilla-num"><input type="checkbox" name="num7" value="1"> 7</label>
+
+            <!-- Fila 2 -->
+            <label class="casilla-num"><input type="checkbox" name="num8" value="1"> 8</label>
+            <label class="casilla-num"><input type="checkbox" name="num9" value="1"> 9</label>
+            <label class="casilla-num"><input type="checkbox" name="num10" value="1"> 10</label>
+            <label class="casilla-num"><input type="checkbox" name="num11" value="1"> 11</label>
+            <label class="casilla-num"><input type="checkbox" name="num12" value="1"> 12</label>
+            <label class="casilla-num"><input type="checkbox" name="num13" value="1"> 13</label>
+            <label class="casilla-num"><input type="checkbox" name="num14" value="1"> 14</label>
+
+            <!-- Fila 3 -->
+            <label class="casilla-num"><input type="checkbox" name="num15" value="1"> 15</label>
+            <label class="casilla-num"><input type="checkbox" name="num16" value="1"> 16</label>
+            <label class="casilla-num"><input type="checkbox" name="num17" value="1"> 17</label>
+            <label class="casilla-num"><input type="checkbox" name="num18" value="1"> 18</label>
+            <label class="casilla-num"><input type="checkbox" name="num19" value="1"> 19</label>
+            <label class="casilla-num"><input type="checkbox" name="num20" value="1"> 20</label>
+            <label class="casilla-num"><input type="checkbox" name="num21" value="1"> 21</label>
+
+            <!-- Fila 4 -->
+            <label class="casilla-num"><input type="checkbox" name="num22" value="1"> 22</label>
+            <label class="casilla-num"><input type="checkbox" name="num23" value="1"> 23</label>
+            <label class="casilla-num"><input type="checkbox" name="num24" value="1"> 24</label>
+            <label class="casilla-num"><input type="checkbox" name="num25" value="1"> 25</label>
+            <label class="casilla-num"><input type="checkbox" name="num26" value="1"> 26</label>
+            <label class="casilla-num"><input type="checkbox" name="num27" value="1"> 27</label>
+            <label class="casilla-num"><input type="checkbox" name="num28" value="1"> 28</label>
+
+            <!-- Fila 5 -->
+            <label class="casilla-num"><input type="checkbox" name="num29" value="1"> 29</label>
+            <label class="casilla-num"><input type="checkbox" name="num30" value="1"> 30</label>
+            <label class="casilla-num"><input type="checkbox" name="num31" value="1"> 31</label>
+            <label class="casilla-num"><input type="checkbox" name="num32" value="1"> 32</label>
+            <label class="casilla-num"><input type="checkbox" name="num33" value="1"> 33</label>
+            <label class="casilla-num"><input type="checkbox" name="num34" value="1"> 34</label>
+            <label class="casilla-num"><input type="checkbox" name="num35" value="1"> 35</label>
+
+            <!-- Fila 6 -->
+            <label class="casilla-num"><input type="checkbox" name="num36" value="1"> 36</label>
+            <label class="casilla-num"><input type="checkbox" name="num37" value="1"> 37</label>
+            <label class="casilla-num"><input type="checkbox" name="num38" value="1"> 38</label>
+            <label class="casilla-num"><input type="checkbox" name="num39" value="1"> 39</label>
+            <label class="casilla-num"><input type="checkbox" name="num40" value="1"> 40</label>
+            <label class="casilla-num"><input type="checkbox" name="num41" value="1"> 41</label>
+            <label class="casilla-num"><input type="checkbox" name="num42" value="1"> 42</label>
+
+            <!-- Fila 7 -->
+            <label class="casilla-num"><input type="checkbox" name="num43" value="1"> 43</label>
+            <label class="casilla-num"><input type="checkbox" name="num44" value="1"> 44</label>
+            <label class="casilla-num"><input type="checkbox" name="num45" value="1"> 45</label>
+            <label class="casilla-num"><input type="checkbox" name="num46" value="1"> 46</label>
+            <label class="casilla-num"><input type="checkbox" name="num47" value="1"> 47</label>
+            <label class="casilla-num"><input type="checkbox" name="num48" value="1"> 48</label>
+            <label class="casilla-num"><input type="checkbox" name="num49" value="1"> 49</label>
+        </div>
+
+        <div class="campo-serie">
+            <label for="serie">Número de Serie (1 al 999):</label>
+            <input type="number" id="serie" name="serie" min="1" max="999" required placeholder="Ej: 345">
+        </div>
+
+        <input type="submit" value="Jugar">
+    </form>
+</div>
+
+</body>
+</html>
